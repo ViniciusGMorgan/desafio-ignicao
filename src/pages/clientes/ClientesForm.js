@@ -39,7 +39,7 @@ const ClientesForm = (record, handleSubmit) => {
       <FormGroup className="right">
         <Button
           type="button"
-          color=" primary margin-right"
+          color=" margin-right"
           className="primary-color"
           onClick={() => handleSubmit()}
         >
