@@ -6,17 +6,14 @@ import { ToastContainer } from "react-toastify";
 import Routes from "./routes";
 import Store from "./store/Store";
 
-import "./index.css";
-
 function App() {
   return (
     <Provider store={Store}>
       <div className={`appContainer`}>
-        <ToastContainer>
-          <BrowserRouter>
-            <Routes />
-          </BrowserRouter>
-        </ToastContainer>
+        <ToastContainer />
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
       </div>
     </Provider>
   );

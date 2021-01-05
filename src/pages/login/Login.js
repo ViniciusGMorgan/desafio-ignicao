@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 
 import LoginForm from "./LoginForm";
 import { login } from "./LoginService";
+import { Auth } from "../../config/storage";
+
 import Card from "../../components/cardLogin/CardLogin";
 
 import "./Login.css";
@@ -27,22 +29,25 @@ export default function Login() {
     setUser({ ...user, blur: true });
     setPassword({ ...password, blur: true });
 
-    if (user.value.length > 0 && password.value.length > 0) {
-      login(
-        user.value,
-        password.value,
-        (message) => setError(message),
-        () => history.push("/"),
-        () => setLoading(false)
-      );
-    }
+    sessionStorage.setItem(Auth, "ajkfbskaf");
+    history.push("/");
+
+    // if (user.value.length > 0 && password.value.length > 0) {
+    //   login(
+    //     user.value,
+    //     password.value,
+    //     (message) => setError(message),
+    //     () => history.push("/"),
+    //     () => setLoading(false)
+    //   );
+    //}
   }
 
   return (
     <div className="loginMain">
       <Card>
         <div className="loginContainer">
-          <p>Informe seu usuário e senha para acessar</p>
+          <p className="loginText">Informe seu usuário e senha para acessar</p>
           <Form onSubmit={handleSubmit}>
             <LoginForm
               user={user}
@@ -53,7 +58,7 @@ export default function Login() {
 
             <FormGroup className="loginButtonGroup">
               <Button color="primary" className="loginButton">
-                {loading ? <Spinner size="sm" /> : "ENVIAR"}
+                {loading ? <Spinner size="sm" /> : "ENTRAR"}
               </Button>
             </FormGroup>
             <p className="loginError">{error && error}</p>

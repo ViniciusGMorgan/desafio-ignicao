@@ -1,8 +1,9 @@
+const initialState = {};
+
 export default (state = {}, action) => {
   switch (action.type) {
-    case "LOGOUT":
-      sessionStorage.clear();
-      history.replace("/login");
+    case "CASE_REDUCER":
+      return initialState;
     default:
       return state;
   }

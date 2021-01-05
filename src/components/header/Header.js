@@ -13,8 +13,8 @@ export default function Header(props) {
   const history = useHistory();
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.Sidebar.isOpenMenu);
-  const { nomeUsuario: user } = JSON.parse(sessionStorage.getItem(Auth));
-  const letterUser = user.charAt(0).toUpperCase();
+  // const { nomeUsuario: user } = JSON.parse(sessionStorage.getItem(Auth));
+  // const letterUser = user.charAt(0).toUpperCase();
 
   function handleToggleMenu() {
     dispatch(toggleMenu(!isOpen));
@@ -32,9 +32,9 @@ export default function Header(props) {
       </Button>
 
       <div style={{ display: "flex" }}>
-        <div className="hero center" title={`Usuário ${user}`}>
-          <b>{letterUser}</b>
-        </div>
+        {/* <div className="hero center" title={`Usuário ${user}`}>
+           <b>{letterUser}</b> 
+        </div> */}
 
         <Button
           type="button"

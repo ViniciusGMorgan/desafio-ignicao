@@ -1,15 +1,42 @@
-.theme_pink {
-  --sidebarBackground: #943356;
-  --sidebarFontColor: #943356;
-  --sidebarSelect: #5f2137;
-  --loginButton: #aa0b0b;
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.theme_blue {
-  --sidebarBackground: #007bff;
-  --sidebarFontColor: #0248af;
-  --sidebarSelect: #0a5eb8;
-  --loginButton: #0655c7;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.routeMain {
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.routerContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.routerContainer.menuOpen {
+  margin: 0 16px 0 316px;
+}
+
+@media (max-width: 820px) {
+  .routeMain {
+    margin: 0 16px;
+  }
+}
+
+@media (min-width: 821px) {
+  .routerContainer.menuClose {
+    margin: 0 16px 0 78px;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -25,29 +52,4 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-.appContainer {
-  background-color: #f5f8ff;
-  height: 100vh;
-}
-
-.routerContainer {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin: 0 16px 0 76px;
-  width: calc(100vw - 76px);
-  overflow-x: hidden;
-}
-
-@media (max-width: 800px) {
-  .routerContainer {
-    margin: 0 5px !important;
-    width: calc(100vw - 10px) !important;
-  }
-}
-
-.dx-checkbox-icon {
-  border-color: #888 !important;
 }

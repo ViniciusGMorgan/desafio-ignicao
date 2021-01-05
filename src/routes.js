@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { Provider, useSelector } from "react-redux";
 
 import Login from "./pages/login/Login";
 import Sidebar from "./components/sidebar/Sidebar";
@@ -7,30 +8,37 @@ import Header from "./components/header/Header";
 import { Auth } from "./config/storage";
 import Pages from "./routes/pages";
 
-const PrivateRoute = ({ component: Component, setTheme, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      sessionStorage.getItem(Auth) != null ? (
-        <div style={{ display: "flex", flexWrap: "nowrap" }}>
-          <Sidebar {...props} />
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const isOpen = useSelector((state) => state.Sidebar.isOpenMenu);
 
-          <div className="routerContainer">
-            <Header />
-            <Component {...props} />
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        sessionStorage.getItem(Auth) != null ? (
+          <div className="routeMain">
+            <Sidebar />
+            <div
+              className={`routerContainer ${isOpen ? "menuOpen" : "menuClose"}`}
+            >
+              <Header />
+              <div style={{ height: "100%" }}>
+                <Component {...props} />
+              </div>
+            </div>
           </div>
-        </div>
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/login",
-            state: { from: props.location },
-          }}
-        />
-      )
-    }
-  />
-);
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location },
+            }}
+          />
+        )
+      }
+    />
+  );
+};
 
 const Routes = (props) => {
   return (
@@ -40,10 +48,9 @@ const Routes = (props) => {
         return (
           <PrivateRoute
             exact
-            key={page.route}
+            key={page.name}
             path={page.route}
-            component={page.Component}
-            setTheme={props.setTheme}
+            component={page.component}
           />
         );
       })}

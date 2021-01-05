@@ -1,32 +1,24 @@
-.loginPage {
-  width: 100vw;
+.loginMain {
+  width: 100%;
   height: 100vh;
-  /* background-image: url("../../assets/images/Bg.png"); */
-  background-repeat: no-repeat;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/grunge-wall-texture.jpg");
 }
 
 .loginContainer {
-  width: 100%;
-  height: 100%;
-  flex-direction: column;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .loginInputGroup {
-  width: 300px !important;
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
+  width: 300px !important;
   margin: 20px 0px 40px 0px !important;
-  margin-bottom: 40px !important;
-}
-
-.loginInput {
-  width: 250px !important;
-  background-color: #e9ecef !important;
 }
 
 .loginInputUser {
@@ -34,12 +26,11 @@
 }
 
 .loginInputPassword {
-  width: 210px !important;
   border-radius: 8px 0px 0px 8px !important;
 }
 
 .loginImage {
-  margin-bottom: 50px;
+  margin: 50px 0;
   width: 150px;
 }
 
@@ -48,8 +39,8 @@
   border-radius: 7px !important;
   font-size: 12pt !important;
   font-weight: bold !important;
-  background-color: var(--loginButton) !important;
-  border: 1px solid var(--loginButton) !important;
+  background-color: #191c1e !important;
+  border: 1px solid #191c1e !important;
 }
 
 .loginButtonGroup {
@@ -58,19 +49,12 @@
 }
 
 .show-password {
-  width: 40px;
-  height: 36px;
-  padding: 0px !important;
   border-radius: 0px 8px 8px 0px !important;
-  background-color: var(--loginButton) !important;
-  border: 1px solid var(--loginButton) !important;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
+  background-color: #191c1e !important;
+  border: 1px solid #191c1e !important;
 }
 
 .loginError {
-  position: fixed;
   text-align: center;
   font-size: 13pt;
   color: #db2424;
@@ -78,7 +62,10 @@
 }
 
 .loginIcon {
-  width: 30px !important;
   margin-right: 10px;
   margin-top: 5px;
+}
+
+.loginText {
+  font-weight: bold;
 }

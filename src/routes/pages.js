@@ -7,14 +7,14 @@ const Pages = [
     menuName: "Home",
     route: "/",
     component: Home,
-    icone: "home",
+    icone: "FiHome",
   },
   {
     name: "clientes",
     menuName: "Clientes",
     route: "/clientes",
     component: Clientes,
-    icone: "",
+    icone: "FiUserPlus",
   },
 ];
 

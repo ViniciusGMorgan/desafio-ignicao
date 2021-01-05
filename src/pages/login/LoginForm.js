@@ -17,7 +17,7 @@ export default function LoginForm({ user, setUser, password, setPassword }) {
   return (
     <>
       <FormGroup className="loginInputGroup">
-        <FiUser className="loginIcon" size="30px" color="#555555" />
+        <FiUser className="loginIcon" size="30px" color="#191c1e" />
         <InputGroup>
           <Input
             autoFocus
@@ -32,7 +32,7 @@ export default function LoginForm({ user, setUser, password, setPassword }) {
       </FormGroup>
 
       <FormGroup className="loginInputGroup">
-        <FiLock className="loginIcon" size="30px" color="#555555" />
+        <FiLock className="loginIcon" size="30px" color="#191c1e" />
         <InputGroup>
           <Input
             type={showPassword ? "text" : "password"}

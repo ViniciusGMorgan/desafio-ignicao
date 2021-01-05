@@ -46,24 +46,26 @@ export default function Sidebar({ location }) {
     };
   }, [wrapperRef, isOpen]);
 
+  const SideBarItem = (item) => {
+    console.log();
+    const Icon = FeatherIcons[item.item.icone];
+    return (
+      <Link className="sideBarItem" to={item.item.route}>
+        <Icon size="25" />
+
+        <span className={`navbar__brand ${isOpen && "displayBlock"}`}>
+          {item.item.menuName}
+        </span>
+      </Link>
+    );
+  };
+
   const SideBarLogo = ({ isOpen }) => {
     return (
       <div className="sideBarLogoContainer">
         <div className={`sideBarLogo logoClose ${isOpen && "displayNone"}`} />
         <div className={`sideBarLogo logoOpen ${!isOpen && "displayNone"}`} />
       </div>
-    );
-  };
-
-  const SideBarItem = (item) => {
-    const Icon = FeatherIcons[item.nomeImagem];
-    return (
-      <Link className="sideBarItem" to={item.url}>
-        {item.icone ? <Icon size="20" /> : <FeatherIcons.FiCircle size="18" />}
-        <span className={`navbar__brand ${isOpen && "displayBlock"}`}>
-          {item.descricao}
-        </span>
-      </Link>
     );
   };
 
@@ -81,6 +83,7 @@ export default function Sidebar({ location }) {
       />
     );
   };
+  console.log("routes", routes);
   return (
     <>
       {unhover && <UnhoverBlock />}
@@ -94,19 +97,6 @@ export default function Sidebar({ location }) {
         >
           <SideBarLogo isOpen={isOpen} />
         </div>
-        <Link
-          className="sideBarItem"
-          id="home"
-          to="/"
-          onClick={() => {
-            handleToggleMenuItem();
-          }}
-        >
-          <FeatherIcons.FiHome size="20" />
-          <span className={`navbar__brand ${isOpen && "displayBlock"}`}>
-            Home
-          </span>
-        </Link>
         <div className="sideBarScroll">
           {routes.map((item) => (
             <SideBarItem item={item} />
