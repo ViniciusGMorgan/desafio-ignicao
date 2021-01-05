@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FormFeedback, FormGroup, Input, Label } from "reactstrap";
 
-export default function InputText(props, ref) {
+export function InputText(props, ref) {
   const {
     autoComplete = "on",
     disabled = false,

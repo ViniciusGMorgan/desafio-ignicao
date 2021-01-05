@@ -10,6 +10,12 @@ code {
     monospace;
 }
 
+.appContainer {
+  background-image: url("./assets/images/grunge-wall-texture.jpg");
+  min-height: 100vh;
+  height: auto;
+}
+
 .routeMain {
   display: flex;
   height: 100%;
