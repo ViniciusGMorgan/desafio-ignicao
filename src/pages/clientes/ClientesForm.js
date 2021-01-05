@@ -36,10 +36,9 @@ const ClientesForm = (record, handleSubmit) => {
           </Col>
         </Row>
       </FormGroup>
-      <FormGroup className="right">
+      <FormGroup className="end">
         <Button
           type="button"
-          color=" margin-right"
           className="primary-color"
           onClick={() => handleSubmit()}
         >

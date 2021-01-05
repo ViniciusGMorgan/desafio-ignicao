@@ -1,15 +1,3 @@
-body {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .appContainer {
   background-image: url("./assets/images/grunge-wall-texture.jpg");
   min-height: 100vh;
@@ -43,19 +31,4 @@ code {
   .routerContainer.menuClose {
     margin: 0 16px 0 78px;
   }
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-  height: 5px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
