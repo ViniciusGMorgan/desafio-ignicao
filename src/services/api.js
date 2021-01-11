@@ -2,15 +2,12 @@ import axios from "axios";
 import { Auth } from "../config/storage";
 
 const api = axios.create({
-  headers: {
-    "Access-Control-Allow-Origin": process.env.REACT_APP_API,
-  },
-  baseURL: process.env.REACT_APP_API,
+  baseURL: "http://localhost:3333/",
 });
 
 api.interceptors.request.use((config) => {
   const token = sessionStorage.getItem(Auth)
-    ? JSON.parse(sessionStorage.getItem(Auth)).accessToken
+    ? JSON.parse(sessionStorage.getItem(Auth)).token
     : "";
   const headers = { ...config.headers };
 

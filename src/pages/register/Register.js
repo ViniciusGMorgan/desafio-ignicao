@@ -1,39 +1,43 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Spinner } from "reactstrap";
 import { useHistory, Link } from "react-router-dom";
+
+import RegisterForm from "./RegisterForm";
+import { register } from "./RegisterService";
 import { Auth } from "../../config/storage";
 
-import LoginForm from "./LoginForm";
-import { login } from "./LoginService";
 import { toast } from "react-toastify";
 
-import Card from "../../components/cardLogin/CardLogin";
+import Card from "../../components/cardRegister/CardRegister";
 
-import "./Login.css";
+import "../login/Login.css";
 
-export default function Login() {
+export default function Register() {
   const history = useHistory();
-  const [user, setUser] = useState({
-    value: "",
-    blur: false,
-  });
+  const initialForm = {
+    name: "",
+    email: "",
+    password: "",
+  };
+  const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
-  const [password, setPassword] = useState({
-    value: "",
-    blur: false,
+  const [error, setError] = useState({
+    name: false,
+    email: false,
+    password: false,
   });
 
   function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    if (user.value.length > 0 && password.value.length > 0) {
-      login(user.value, password.value)
+    if (!form.email || !form.name || form.password) {
+      register(form)
         .then((res) => {
           sessionStorage.setItem(Auth, JSON.stringify(res));
           history.push("/");
         })
         .catch((err) => {
-          toast.error("Erro ao efutuar login!", {
+          toast.error("Erro ao efutuar cadastro!", {
             position: "bottom-center",
             autoClose: true,
             hideProgressBar: false,
@@ -64,24 +68,24 @@ export default function Login() {
     <div className="loginMain">
       <Card>
         <div className="loginContainer">
-          <p className="loginText">Informe seu usuário e senha para acessar</p>
+          <p className="loginText">Informe seus dados para se cadastrar</p>
           <Form onSubmit={handleSubmit}>
-            <LoginForm
-              user={user}
-              setUser={setUser}
-              password={password}
-              setPassword={setPassword}
+            <RegisterForm
+              form={form}
+              setForm={setForm}
+              error={error}
+              setError={setError}
             />
 
             <FormGroup className="loginButtonGroup">
               <Button color="primary" className="loginButton">
-                {loading ? <Spinner size="sm" /> : "ENTRAR"}
+                {loading ? <Spinner size="sm" /> : "CADASTRAR"}
               </Button>
             </FormGroup>
-            <p className="loginText" style={{ paddingTop: 10 }}>
-              Ainda não tem cadastro?{" "}
-              <Link style={{ color: "#fff" }} to="/register">
-                Cadastre-se
+            <p className="loginText">
+              Já tem cadastro?{" "}
+              <Link style={{ color: "#fff" }} to="/login">
+                Entrar
               </Link>
             </p>
           </Form>

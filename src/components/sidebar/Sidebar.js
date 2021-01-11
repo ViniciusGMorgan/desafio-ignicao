@@ -1,25 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useHistory, Link } from "react-router-dom";
 import { Auth } from "../../config/storage";
 import * as FeatherIcons from "react-icons/fi";
-
-import { toggleMenu } from "../../store/modules/sidebar/action";
-import { logout } from "../../store/modules/login/action";
 
 import routes from "../../routes/pages";
 
 import "./Sidebar.css";
 
 export default function Sidebar({ location }) {
+  const history = useHistory();
   const wrapperRef = useRef(null);
-  const dispatch = useDispatch();
-  const isOpen = useSelector((state) => state.Sidebar.isOpenMenu);
+  const isOpen = false;
   const [unhover, setUnhover] = useState(false);
 
   const handleToggleMenuItem = async () => {
     await setUnhover(true);
-    await dispatch(toggleMenu(false));
     setTimeout(() => setUnhover(false), 1500);
   };
 
@@ -36,7 +31,6 @@ export default function Sidebar({ location }) {
 
     function closeMenu(statusMenu) {
       if (statusMenu) {
-        dispatch(toggleMenu(false));
       }
     }
 
@@ -46,8 +40,12 @@ export default function Sidebar({ location }) {
     };
   }, [wrapperRef, isOpen]);
 
+  function logout() {
+    sessionStorage.removeItem(Auth);
+    history.replace("/login");
+  }
+
   const SideBarItem = (item) => {
-    console.log();
     const Icon = FeatherIcons[item.item.icone];
     return (
       <Link className="sideBarItem" to={item.item.route}>
@@ -83,7 +81,6 @@ export default function Sidebar({ location }) {
       />
     );
   };
-  console.log("routes", routes);
   return (
     <>
       {unhover && <UnhoverBlock />}

@@ -1,10 +1,10 @@
 import api from "../../services/api";
 
-export function login(user, password) {
-  const url = `sessions`;
+export function register(form) {
+  const url = `users`;
   return new Promise((resolve, reject) => {
     api
-      .post(url, { email: user, password })
+      .post(url, form)
       .then((response) => resolve(response.data))
       .catch((error) => reject(error.response));
   });

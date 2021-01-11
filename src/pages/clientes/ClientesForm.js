@@ -1,7 +1,13 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Row, Col, Button } from "reactstrap";
 
-const ClientesForm = (record, handleSubmit) => {
+const ClientesForm = ({ record, setRecord, initialRecord, handleSubmit }) => {
+  const handleChange = (e) => {
+    let name = e.target.name ? e.target.name : "";
+    let value = e.target.value ? e.target.value : "";
+
+    setRecord({ ...record, [name]: value });
+  };
   return (
     <Form>
       <FormGroup>
@@ -10,18 +16,20 @@ const ClientesForm = (record, handleSubmit) => {
             <Label>Nome do cliente</Label>
             <Input
               type="text"
-              name="cliente"
+              name="name"
               placeholder="Digite o nome do cliente"
-              value={record.cliente}
+              onChange={(e) => handleChange(e)}
+              value={record.name}
             ></Input>
           </Col>
           <Col>
             <Label>Email</Label>
             <Input
               type="text"
-              name="cliente"
-              placeholder="Digite o nome do cliente"
-              value={record.cliente}
+              name="email"
+              placeholder="Digite o email do cliente"
+              onChange={(e) => handleChange(e)}
+              value={record.email}
             ></Input>
           </Col>
 
@@ -29,20 +37,27 @@ const ClientesForm = (record, handleSubmit) => {
             <Label>Tags</Label>
             <Input
               type="text"
-              name="cliente"
-              placeholder="Digite o nome do cliente"
-              value={record.cliente}
+              name="tags"
+              placeholder="Digite as tags do cliente"
+              onChange={(e) => handleChange(e)}
+              value={record.tags}
             ></Input>
           </Col>
         </Row>
       </FormGroup>
-      <FormGroup className="end">
-        <Button
-          type="button"
-          className="primary-color"
-          onClick={() => handleSubmit()}
-        >
-          Cadastrar
+      <FormGroup style={{ display: "flex", justifyContent: "flex-end" }}>
+        {record.id ? (
+          <Button
+            type="button"
+            color="danger"
+            style={{ marginRight: 15 }}
+            onClick={() => setRecord(initialRecord)}
+          >
+            Cancelar
+          </Button>
+        ) : null}
+        <Button type="button" onClick={() => handleSubmit()}>
+          Confirmar
         </Button>
       </FormGroup>
     </Form>

@@ -20,7 +20,6 @@ export default function LoginForm({ user, setUser, password, setPassword }) {
         <FiUser className="loginIcon" size="30px" color="#191c1e" />
         <InputGroup>
           <Input
-            autoFocus
             invalid={!user.value.length > 0 && user.blur}
             onBlur={() => setUser({ ...user, blur: true })}
             onChange={(e) => setUser({ ...user, value: e.target.value })}
